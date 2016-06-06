@@ -10,3 +10,12 @@
 . link:chapter-4/README.adoc[Chapter 4]
 .. Unfinished article
 . Unfinished Chapter
+
+== Part 2
+
+. link:chapter-1/README.adoc[Chapter 1]
+
+
+'''
+
+. link:chapter-1/README.adoc[Chapter 1]

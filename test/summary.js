@@ -11,15 +11,36 @@ describe('Summary parsing', function () {
         var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/SUMMARY.adoc'), 'utf8');
         LEXED = summary(CONTENT);
         PART = LEXED.parts[0];
-        // todo: add support for parts in asciidoc
+
     });
 
-    it('should detect parts', function() {
-        assert.equal(LEXED.parts.length, 1);
+    describe('Parts', function() {
+        it('should detect parts', function() {
+            assert.equal(LEXED.parts.length, 3);
+        });
+
+        it('should detect title', function() {
+            assert.equal(LEXED.parts[0].title, '');
+            assert.equal(LEXED.parts[1].title, 'Part 2');
+            assert.equal(LEXED.parts[2].title, '');
+        });
+
+        it('should detect empty parts', function() {
+            var CONTENT_EMPTY = fs.readFileSync(
+                path.join(__dirname, './fixtures/SUMMARY-PARTS.adoc'), 'utf8');
+            var LEXED_EMPTY = summary(CONTENT_EMPTY);
+
+            assert.equal(LEXED_EMPTY.parts.length, 4);
+            assert.equal(LEXED_EMPTY.parts[2].title, 'Empty part');
+        });
     });
 
     it('should detect articles', function() {
         assert.equal(PART.articles.length, 5);
+    });
+
+    it('should detect chapters in other parts', function() {
+        assert.equal(LEXED.parts[1].articles.length, 1);
     });
 
     it('should support articles', function() {
@@ -42,7 +63,7 @@ describe('Summary parsing', function () {
         assert(PART.articles[4].title);
     });
 
-    it('should normalize refs from .md', function() {
+    it('should normalize paths from .adoc', function() {
         assert.equal(PART.articles[0].ref,'chapter-1/README.adoc');
         assert.equal(PART.articles[1].ref,'chapter-2/README.adoc');
         assert.equal(PART.articles[2].ref,'chapter-3/README.adoc');

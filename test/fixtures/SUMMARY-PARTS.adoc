@@ -1,0 +1,20 @@
+= Summary
+
+== Part 1
+
+. link:chapter-1/README.adoc[Chapter 1]
+. link:chapter-2/README.adoc[Chapter 2]
+. link:chapter-3/README.adoc[Chapter 3]
+. link:chapter-4/README.adoc[Chapter 4]
+
+'''
+
+. link:chapter-1/README.adoc[Chapter for untitled part]
+
+== Empty part
+
+== Part 2
+
+. link:chapter-1/README.adoc[Chapter for Part 2]
+
+
